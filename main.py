@@ -56,3 +56,31 @@ with pyvirtualcam.Camera(width=width, height=height, fps=20) as virtual_cam:
                     pygame.quit()
                     exit()
 
+
+
+    
+    
+import numpy as np
+import cv2
+
+# Convert an image from RGB to Grayscale
+def convert_to_grayscale(image):
+    return cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
+
+# Resize an image to the specified dimensions
+def resize_image(image, width, height):
+    return cv2.resize(image, (width, height))
+
+# Rotate an image by the specified angle
+def rotate_image(image, angle):
+    (h, w) = image.shape[:2]
+    center = (w / 2, h / 2)
+    M = cv2.getRotationMatrix2D(center, angle, 1.0)
+    return cv2.warpAffine(image, M, (w, h))
+
+# Adjust the brightness of an image
+def adjust_brightness(image, value=1.0):
+    hsv = cv2.cvtColor(image, cv2.COLOR_RGB2HSV)
+    hsv[:, :, 2] = hsv[:, :, 2] * value
+    return cv2.cvtColor(hsv, cv2.COLOR_HSV2RGB)
+

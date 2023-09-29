@@ -1,3 +1,9 @@
 opencv-python
 pygame
 pyvirtualcam
+screeninfo 
+PyGetWindow 
+opencv-python 
+flask 
+streamlit 
+requests
